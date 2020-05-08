@@ -1,19 +1,18 @@
 {
   "name": "panna-cli",
-  "version": "0.0.1",
-  "description": "Bore Thec frontend cli",
+  "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:xiaofuyesnew/panna-cli.git",
   "author": "xiaofuyesnew <xiaofuyesnew@qq.com>",
   "license": "MIT",
-  "bin": {
-    "panna": "bin/panna"
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0-beta.2"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
-    "commander": "^4.0.1",
-    "download-git-repo": "^3.0.2",
-    "inquirer": "^7.0.0",
-    "ora": "^4.0.3"
+    "jquery": "^3.5.1"
   }
 }
