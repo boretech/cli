@@ -10,9 +10,14 @@
     "@babel/preset-env": "^7.9.6",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0-beta.2"
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-html-replace": "^1.6.2"
   },
   "dependencies": {
     "jquery": "^3.5.1"
+  },
+  "scripts": {
+    "conf": "gulp init"
   }
 }
