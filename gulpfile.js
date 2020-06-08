@@ -65,6 +65,10 @@ const replaceData = config => {
     src: '',
     tpl: config.bundle
   }
+  data.loading = {
+    src: '',
+    tpl: ''
+  }
   console.log(data)
   return data
 }
