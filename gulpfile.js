@@ -68,6 +68,7 @@ const replaceData = config => {
  * 
  * 清除原有的index.html
  */
+const backup = () => src('src/index.html').pipe(dest('backup'))
 
 const cleanHtml = () => src('src/index.html', {
   read: false,
@@ -76,5 +77,6 @@ const cleanHtml = () => src('src/index.html', {
 
 const init = () => src('public/index.html').pipe(replace(replaceData(config))).pipe(dest('src'))
 
-exports.init = series(cleanHtml, init)
+exports.init = series(backup, cleanHtml, init)
 exports.serve = series(service)
+exports.backup = backup

@@ -1,7 +1,20 @@
+/*
+ * @Author: Allen.Wong 
+ * @Date: 2020-06-08 11:02:59 
+ * @Last Modified by: Allen.Wong
+ * @Last Modified time: 2020-06-08 11:30:55
+ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
+  color: #333;
 }
 
 body {
@@ -14,10 +27,87 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 
 .page {
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+a {
+  -webkit-appearance: none;
+  text-decoration: none;
+  -webkit-text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+img {
+  display: block;
+  border: none;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+/* swiper预制样式 */
+
+.swiper-container,
+.swiper-wrapper,
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
   position: relative;
+}
+
+/* 音乐图标样式 */
+
+.musicBtn {
+  opacity: 0.7;
+  position: fixed;
+  right: 0.1rem;
+  top: 0.1rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  z-index: 99;
+  width: .4rem;
+  height: .4rem;
+}
+
+.music_open {
+  animation: arotate 2s linear infinite;
+}
+
+@keyframes arotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* 下滑箭头样式 */
+
+.arrow {
+  width: 0.58rem;
+  z-index: 1009;
+  position: fixed;
+  bottom: 0.4rem;
+  left: 50%;
+  margin-left: -0.29rem;
 }
