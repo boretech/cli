@@ -2113,6 +2113,11 @@ gulp-html-replace@^1.6.2:
     slash "^1.0.0"
     vinyl-buffer "^1.0.0"
 
+gulp-rename@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npm.taobao.org/gulp-rename/download/gulp-rename-2.0.0.tgz?cache=0&sync_timestamp=1575478728338&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fgulp-rename%2Fdownload%2Fgulp-rename-2.0.0.tgz#9bbc3962b0c0f52fc67cd5eaff6c223ec5b9cf6c"
+  integrity sha1-m7w5YrDA9S/GfNXq/2wiPsW5z2w=
+
 gulp@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npmjs.org/gulp/-/gulp-4.0.2.tgz#543651070fd0f6ab0a0650c6a3e6ff5a7cb09caa"

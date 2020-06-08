@@ -1,6 +1,6 @@
 const config = {
   author: 'panna',
-  title: '般若模板',
+  title: '般若模板-测试',
   loading: 20,  // 1 - 30
   libs: {
     animate: {
@@ -17,13 +17,14 @@ const config = {
       }
     },
     betterScroll: {
-      available: true,
+      available: false,
       path: {
         js: '//cdn.pannacloud.com/better-scroll/1.15.2/better-scroll.js'
       }
-    }
+    },
   },
-  aspx: '<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="_2019_wukuang_0827_inv_index" %>'
+  bundle: '<!-- build:bundle -->\n\t<script src="util.js"></script>\n\t<script src="main.js"></script>\n\t<!-- endbuild -->',
+  aspx: '<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="_2019_wukuang_0827_inv_index" %>\n\n'
 }
 
 module.exports = config

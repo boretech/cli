@@ -9,6 +9,7 @@ const {
 const babel = require('gulp-babel') // babel转义工具
 const browserSync = require('browser-sync').create() // 本地服务器
 const replace = require('gulp-html-replace') // html内容替换
+const rename = require('gulp-rename') // 更改文件名
 const clean = require('gulp-clean') // 项目文件删除
 
 const browserify = () => src('src/main.js').pipe(babel()).pipe(dest('src/tmp/main.js'))
@@ -60,6 +61,10 @@ const replaceData = config => {
   }
   data.css = css
   data.js = js
+  data.bundle = {
+    src: '',
+    tpl: config.bundle
+  }
   console.log(data)
   return data
 }
@@ -77,6 +82,15 @@ const cleanHtml = () => src('src/index.html', {
 
 const init = () => src('public/index.html').pipe(replace(replaceData(config))).pipe(dest('src'))
 
-exports.init = series(backup, cleanHtml, init)
+// 向aspx注入头部
+
+const aspxHeader = () => src('public/template.aspx').pipe(replace({
+  header: {
+    src: '',
+    tpl: config.aspx
+  }
+})).pipe(rename('index.aspx')).pipe(dest('public'))
+
+exports.init = parallel(series(backup, cleanHtml, init), aspxHeader)
 exports.serve = series(service)
 exports.backup = backup
