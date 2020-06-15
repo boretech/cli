@@ -4,7 +4,7 @@ const config = {
   loading: 20,  // 1 - 30
   libs: {
     animate: {
-      available: true,
+      available: false,
       path: {
         css: '//cdn.pannacloud.com/animate/4.0.0/animate.min.css'
       }
@@ -24,7 +24,7 @@ const config = {
     },
   },
   bundle: '<!-- build:bundle -->\n\t<script src="util.js"></script>\n\t<script src="main.js"></script>\n\t<!-- endbuild -->',
-  aspx: '<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="_2019_wukuang_0827_inv_index" %>\n\n'
+  aspx: '<%@ Page Language="C#" AutoEventWireup="true" CodeFile="index.aspx.cs" Inherits="_2019_wukuang_0827_inv_index" %>'
 }
 
 module.exports = config
