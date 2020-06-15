@@ -1,10 +1,10 @@
 const config = {
-  author: 'panna',
+  author: 'panna-fe',
   title: '般若模板-测试',
-  loading: 20,  // 1 - 30
+  loading: 'random',
   libs: {
     animate: {
-      available: false,
+      available: true,
       path: {
         css: '//cdn.pannacloud.com/animate/4.0.0/animate.min.css'
       }
@@ -17,7 +17,7 @@ const config = {
       }
     },
     betterScroll: {
-      available: false,
+      available: true,
       path: {
         js: '//cdn.pannacloud.com/better-scroll/1.15.2/better-scroll.js'
       }

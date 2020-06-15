@@ -42,8 +42,13 @@ const replaceData = config => {
   if (config.title) {
     data.title = {
       src: config.title,
-      tpl: '<title>%s</title>\n'
+      tpl: '<title>%s</title>'
     }
+  }
+
+  data.loading = {
+    src: config.loading === 'random' ? Math.floor(Math.random() * 30) + 1 : config.loading,
+    tpl: '<img class="loading-icon" src="//cdn.pannacloud.com/img/loading/loading%s.svg">'
   }
 
   let css = [],
@@ -65,10 +70,7 @@ const replaceData = config => {
     src: '',
     tpl: config.bundle
   }
-  data.loading = {
-    src: '',
-    tpl: ''
-  }
+
   console.log(data)
   return data
 }
