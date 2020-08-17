@@ -19,6 +19,7 @@
   "scripts": {
     "conf": "gulp init",
     "serve": "gulp serve",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": ""
   }
 }

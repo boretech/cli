@@ -99,5 +99,5 @@ const aspxHeader = () => src('public/template.aspx').pipe(replace({
 
 exports.init = parallel(series(backup, cleanHtml, init), aspxHeader)
 exports.serve = series(service)
-exports.build = series()
+// exports.build = series()
 exports.backup = backup
