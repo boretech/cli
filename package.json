@@ -1,0 +1,19 @@
+{
+  "name": "bore-cli",
+  "version": "1.0.0",
+  "description": "般若互动技术部H5制作脚手架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaofuyesnew/bore-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaofuyesnew/bore-cli/issues"
+  },
+  "homepage": "https://github.com/xiaofuyesnew/bore-cli#readme"
+}
