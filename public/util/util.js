@@ -2,12 +2,40 @@
  * @Author: allen.wong 
  * @Date: 2020-11-25 15:36:42 
  * @Last Modified by: allen.wong
- * @Last Modified time: 2020-11-25 15:57:03
+ * @Last Modified time: 2020-11-25 16:50:47
  */
 import pop from './popup/popup'
+import check from './check'
 
 ;(function ($) {
+  // 自定义jq组件
   $.extend({
-    pop
+    /**
+     * 
+     * @param {object} config
+     * config示例
+     * {
+     *    
+     * } 
+     */
+    init(config) {
+      const {} = config
+    },
+    // popup的载入
+    pop,
+    // popup的二次封装，快捷调用
+    loading(tip) {
+      return this.pop
+    },
+    check,
+    name(value) {
+      return this.check('name', value)
+    },
+    tel(value) {
+      return this.check('tel', value)
+    },
+    email(value) {
+      return this.check('email', value)
+    }
   })
 })($)

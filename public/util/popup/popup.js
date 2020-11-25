@@ -2,11 +2,9 @@
  * @Author: allen.wong 
  * @Date: 2020-11-25 15:26:12 
  * @Last Modified by: allen.wong
- * @Last Modified time: 2020-11-25 15:52:50
+ * @Last Modified time: 2020-11-25 16:20:10
  */
 
-const pop = {
+export default {
   test: '111'
 }
-
-export default pop
