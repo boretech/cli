@@ -27,6 +27,7 @@
   },
   "scripts": {
     "serve": "npx webpack serve --config webpack.dev.js --mode development",
-    "build": "npx webpack --config webpack.prod.js --mode production"
+    "build": "npx webpack --config webpack.prod.js --mode production",
+    "deploy": "yarn build"
   }
 }
