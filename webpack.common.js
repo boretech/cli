@@ -26,12 +26,15 @@ module.exports = {
       loader: 'babel-loader'
     }, {
       test: /\.s[ac]ss$/i,
-      use: [MiniCssExtractPlugin.loader, 'css-loader', {
+      use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', {
         loader: 'sass-loader',
         options: {
           implementation: require("sass")
         }
       }]
+    }, {
+      test: /\.html$/,
+      loader: 'html-loader'
     }]
   },
   plugins: [

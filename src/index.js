@@ -1,3 +1,4 @@
+import '../public/index.html'
 import './index.scss'
 import '../public/util/util'
 
