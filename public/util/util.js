@@ -2,7 +2,7 @@
  * @Author: allen.wong 
  * @Date: 2020-11-25 15:36:42 
  * @Last Modified by: allen.wong
- * @Last Modified time: 2020-11-25 16:50:47
+ * @Last Modified time: 2020-11-27 17:55:36
  */
 import pop from './popup/popup'
 import check from './check'
@@ -10,16 +10,8 @@ import check from './check'
 ;(function ($) {
   // 自定义jq组件
   $.extend({
-    /**
-     * 
-     * @param {object} config
-     * config示例
-     * {
-     *    
-     * } 
-     */
     init(config) {
-      const {} = config
+      // const {} = config
     },
     // popup的载入
     pop,
@@ -28,14 +20,18 @@ import check from './check'
       return this.pop
     },
     check,
-    name(value) {
+    // 数据验证的二次封装
+    cName(value) {
       return this.check('name', value)
     },
-    tel(value) {
+    cTel(value) {
       return this.check('tel', value)
     },
-    email(value) {
+    cEmail(value) {
       return this.check('email', value)
+    },
+    cIdcard(value) {
+      return this.check('idcard', value )
     }
   })
 })($)

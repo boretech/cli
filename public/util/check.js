@@ -2,7 +2,7 @@
  * @Author: allen.wong 
  * @Date: 2020-11-25 16:18:53 
  * @Last Modified by: allen.wong
- * @Last Modified time: 2020-11-25 16:52:39
+ * @Last Modified time: 2020-11-27 17:44:56
  */
 
 const area = {
@@ -44,7 +44,7 @@ const area = {
 }
 
 const idcard = (idStr) => {
-
+  return false
 }
 
 export default (type, value) => {

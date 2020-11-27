@@ -3,9 +3,9 @@ import './index.scss'
 import '../public/util/util'
 
 window.onload = () => {
-  $.init({
+  // $.init({
 
-  })
+  // })
 }
 
 $(function () {
@@ -13,4 +13,5 @@ $(function () {
   console.log('test')
   console.log($.pop)
   console.log($.loading())
+  console.log($.cName('黄河水'))
 })
