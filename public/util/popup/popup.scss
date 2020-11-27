@@ -1,6 +1,13 @@
-.pop {
-  width: 100%;
-  height: 100%;
+/*
+ * @Author: allen.wong 
+ * @Date: 2020-11-25 22:51:27 
+ * @Last Modified by: allen.wong
+ * @Last Modified time: 2020-11-25 23:12:25
+ */
+
+.pop-mask {
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, .6);
   position: fixed;
   top: 0;
