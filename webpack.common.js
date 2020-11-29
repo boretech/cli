@@ -20,14 +20,16 @@ module.exports = {
             override: true,
           },
         }
-      }, {
+      },
+      {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [{
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'img/[name].[hash:7].[ext]',
-              publicPath: './'
+              name: '[name].[hash:6].[ext]',
+              publicPath: 'images',
+              outputPath: 'images'
             }
           },
           {

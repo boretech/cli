@@ -5087,6 +5087,11 @@ postcss@>=5.0.2, postcss@^8.1.4:
     source-map "^0.6.1"
     vfile-location "^3.2.0"
 
+preloadjs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/preloadjs/download/preloadjs-1.0.1.tgz#71d14e94a8c94b1f6def2b01891d6bcd7e788c5d"
+  integrity sha1-cdFOlKjJSx9t7ysBiR1rzX54jF0=
+
 prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.npm.taobao.org/prepend-http/download/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
@@ -5784,6 +5789,11 @@ sort-keys@^2.0.0:
   integrity sha1-ZYU1WEhh7JfXMNbPQYIuH1ZoQSg=
   dependencies:
     is-plain-obj "^1.0.0"
+
+soundjs@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/soundjs/download/soundjs-1.0.1.tgz#99970542d28d0df2a1ebd061ae75c961a98c8180"
+  integrity sha1-mZcFQtKNDfKh69BhrnXJYamMgYA=
 
 source-list-map@^2.0.0, source-list-map@^2.0.1:
   version "2.0.1"
