@@ -12,30 +12,51 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: require.resolve('jquery'),
-      loader: 'expose-loader',
-      options: {
-        exposes: {
-          globalName: '$',
-          override: true,
-        },
-      }
-    }, {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }, {
-      test: /\.s[ac]ss$/i,
-      use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', {
-        loader: 'sass-loader',
+        test: require.resolve('jquery'),
+        loader: 'expose-loader',
         options: {
-          implementation: require("sass")
+          exposes: {
+            globalName: '$',
+            override: true,
+          },
         }
-      }]
-    }, {
-      test: /\.html$/,
-      loader: 'html-loader'
-    }]
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [{
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: '[name].[hash:6].[ext]',
+              publicPath: 'images',
+              outputPath: 'images'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true,
+            }
+          }
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      }, {
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', {
+          loader: 'sass-loader',
+          options: {
+            implementation: require("sass")
+          }
+        }]
+      }, {
+        test: /\.html$/,
+        loader: 'html-loader'
+      }
+    ]
   },
   plugins: [
     new webpack.ProvidePlugin({
