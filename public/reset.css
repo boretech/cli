@@ -1,0 +1,22 @@
+/*
+ * @Author: allen.wong 
+ * @Date: 2020-11-25 22:51:42 
+ * @Last Modified by: allen.wong
+ * @Last Modified time: 2020-12-08 15:49:47
+ */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+input,
+textarea {
+  user-select: auto;
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
