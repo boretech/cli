@@ -2,10 +2,11 @@
  * @Author: allen.wong 
  * @Date: 2020-11-25 15:36:42 
  * @Last Modified by: allen.wong
- * @Last Modified time: 2020-11-29 23:20:48
+ * @Last Modified time: 2020-12-09 09:10:36
  */
 import pop from './popup/popup'
 import check from './check'
+import loader from './loader'
 
 ;(function ($) {
   // 自定义jq组件
@@ -32,6 +33,7 @@ import check from './check'
     },
     cIdcard(value) {
       return this.check('idcard', value )
-    }
+    },
+    loader,
   })
 })($)
