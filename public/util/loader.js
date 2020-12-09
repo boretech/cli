@@ -1,11 +1,16 @@
 import 'script-loader!preloadjs/lib/preloadjs.js'
 import 'script-loader!soundjs/lib/soundjs.js'
 
-const loader = {
-  load: 111,
+export default {
+  cfg: {},
+  init(cfg) {
+    for (let key in cfg) {
+
+    }
+    this.cfg = cfg
+  },
   show() {
     console.log(createjs)
+    console.log(this.load)
   }
 }
-
-export default loader
