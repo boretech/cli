@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const {
   merge
 } = require('webpack-merge')
@@ -8,5 +9,10 @@ module.exports = merge(common, {
     contentBase: './dist',
     open: true,
     hot: true
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      PROD: JSON.stringify(false)
+    })
+  ]
 })

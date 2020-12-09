@@ -16,4 +16,8 @@ $(function () {
   console.log($.cName('黄河水'))
 
   console.log($.loader.show())
+  console.log(wx, $.share.show())
+
+  let test = PROD ? 'prod' : 'dev'
+  console.log(test)
 })
