@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const pkg = require('./package.json')
-const cmd = require('commander')
+const program = require('commander')
 const progress = require('process')
 const chalk = require('chalk')
 
