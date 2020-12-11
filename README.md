@@ -1,2 +1,4 @@
-# panna-cli
-般若互动技术部H5制作脚手架
+# bore-cli
+
+A cli tool for bore tech frontend team.
+

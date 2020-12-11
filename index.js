@@ -1,99 +1,125 @@
-// const chalk = require('chalk')
-// const Progress = require('progress')
+#!/usr/bin/env node
 
-// const bar = new Progress('processing: [:bar] :percent :etas :current/:total', {complete: '#', incomplete: '_',total: 50})
+const registry = require('./registry.json')
+const {
+  version
+} = require('./package.json')
+const {
+  program
+} = require('commander')
+const download = require('download-git-repo')
+const progress = require('process')
+const chalk = require('chalk')
+const ora = require('ora')
+const inquirer = require('inquirer')
 
-// let timer = setInterval(() => {
-//   bar.tick()
-//   if (bar.complete) {
-//     console.log(chalk.green('finished!'))
-//     clearInterval(timer)
-//   }
-// }, 200)
-
-const chalkWorker = require('chalk-animation')
-
-class Race {
-  constructor(props = {}) {
-    [
-      ['rabbit', '兔子'],
-      ['turtle', '乌龟'],
-      ['turtleStep', 0],
-      ['rabbitStep', 0],
-      ['start', '|'],
-      ['end', '》'],
-      ['pad', '.'],
-      ['speed', 1],
-      ['steps', 50],
-      ['stopAt', Math.floor(50 * Math.random())]
-    ].map(elem => {
-      const [key, value] = elem
-      if (!(key in props)) {
-        this[key] = value
-      }
-    })
-  }
-
-  getRaceTrack() {
-    const {
-      start,
-      pad,
-      turtle,
-      turtleStep,
-      rabbit,
-      rabbitStep,
-      steps,
-      end
-    } = this
-
-    if (!turtleStep && !rabbitStep) {
-      return `${turtle}${rabbit}${start}${pad.repeat(steps)}${end}`
+const createProject = (typeUrl, dir) => {
+  console.log(chalk.blueBright(`creating "${dir}" project template...`))
+  const loading = ora(chalk.blue('processing...'))
+  loading.start()
+  download(typeUrl, dir, {
+    clone: true
+  }, err => {
+    if (err) {
+      loading.fail(chalk.redBright(`Error: ${JSON.stringify(err)}`))
+      process.exit(1)
+    } else {
+      loading.succeed(chalk.greenBright(`created "${dir}" success! Enjoy Coding!`))
+      console.log(chalk.yellowBright(`Hint: "cd ${dir} && yarn" or "cd ${dir} && npm install" to install dependence if necessary`))
     }
-
-    const [
-      [minStr, min],
-      [maxStr, max]
-    ] = [
-      [turtle, turtleStep],
-      [rabbit, rabbitStep]
-    ].sort((a, b) => a[1] - b[1])
-
-    const prefix = `${pad.repeat((min || 1) - 1)}`
-    const middle = `${pad.repeat(max - min)}`
-    const suffix = `${pad.repeat(steps - max)}`
-
-    const _start = `${start}${prefix}${minStr}`
-    const _end = suffix ? `${maxStr}${suffix}${end}` : `${end}${maxStr}`
-    return `${_start}${middle}${_end}`
-  }
-
-  updateRaceTrack(state, racing) {
-    racing.replace(state)
-  }
-
-  updateSteps() {
-    if (this.turtleStep >= this.steps) return
-    if (this.rabbitStep <= this.stopAt) {
-      this.rabbitStep += 3 * this.speed
-    }
-    this.turtleStep += 1 * this.speed
-  }
-
-  race() {
-    const initState = this.getRaceTrack()
-    const racing = chalkWorker.rainbow(initState)
-    let t = 0
-    let timer = setInterval(() => {
-      if (t <= 6) {
-        t += 1
-        return
-      }
-      const state = this.getRaceTrack()
-      this.updateRaceTrack(state, racing)
-      this.updateSteps()
-    }, 150)
-  }
+  })
 }
 
-const race = new Race()
-race.race()
+
+program
+  .name('bore')
+  .command('create [project_name]')
+  .alias('c')
+  .description('create a project template')
+  .option('-t, --type [h5|mini]', 'create a specified project template')
+  .action(function (cmd, cmdObj) {
+    if (cmd) {
+      // 有create命令-自定义创建模式
+      if (cmd !== 'create' && cmd !== 'c') {
+        // 命令不正确的情况下输出报错信息
+        console.log(chalk.redBright(`Error: no command "${cmd}" found! You can run "bore -h" to see more detail.`))
+        process.exit(1)
+      } else {
+        // 命令正确的情况下
+        const {
+          args,
+          type
+        } = cmdObj
+        if (type) {
+          // 指定类型的情况下
+          const typeUrl = registry[type]
+          if (typeUrl) {
+            const dir = args[1]
+            if (dir) {
+              // 有创建目录名的情况
+              createProject(typeUrl, dir)
+            } else {
+              // 无创建目录名
+              inquirer.prompt([{
+                name: 'projectName',
+                message: chalk.grey('input a project name:')
+              }]).then(answer => {
+                const {
+                  projectName
+                } = answer
+                createProject(typeUrl, projectName)
+              })
+            }
+          } else {
+            console.log(chalk.redBright(`Error: no "${type}" type found! Choose a type from [h5|mini]`))
+            process.exit(1)
+          }
+        } else {
+          const dir = args[1]
+          if (dir) {
+            // 有创建目录名的情况
+            inquirer.prompt([{
+              name: 'projectType',
+              type: 'list',
+              message: 'which template you will choose?',
+              choices: ['h5', 'mini']
+            }]).then(answer => {
+              const {
+                projectType
+              } = answer
+              createProject(registry[projectType], dir)
+            })
+          } else {
+            // 无创建目录名
+            inquirer.prompt([{
+              name: 'projectName',
+              message: chalk.grey('input a project name:')
+            }]).then(answer => {
+              const {
+                projectName
+              } = answer
+              // 未指定类型-选择类型
+              inquirer.prompt([{
+                name: 'projectType',
+                type: 'list',
+                message: 'which template you will choose?',
+                choices: ['h5', 'mini']
+              }]).then(answer => {
+                const {
+                  projectType
+                } = answer
+                createProject(registry[projectType], projectName)
+              })
+            })
+          }
+        }
+      }
+    } else {
+      // 无create命令
+      console.log(chalk.redBright(`Error: no command found! You can run "bore -h" to see more detail.`))
+    }
+  })
+  .usage("[project_name] [<-t|--type> h5|mini]")
+  .helpOption('-h, --help', 'display help for bore-cli')
+  .version(chalk.gray(`bore-cli ${version}`), '-v, --version', 'output current version of bore-cli')
+  .parse(process.argv)
