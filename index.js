@@ -37,7 +37,6 @@ program
   .alias('c')
   .description('create a project template')
   .option('-t, --type [h5|mini]', 'create a specified project template')
-  .option('-g, --git [url]', 'create a project template from a git registry')
   .action(function (cmd, cmdObj) {
     if (cmd) {
       // 有create命令-自定义创建模式
@@ -49,14 +48,9 @@ program
         // 命令正确的情况下
         const {
           args,
-          type,
-          git
+          type
         } = cmdObj
         if (type) {
-          if (git) {
-            console.log(chalk.redBright('Error: can\'t create a specified type of project from a git registry'))
-            process.exit(1)
-          }
           // 指定类型的情况下
           const typeUrl = registry[type]
           if (typeUrl) {
@@ -81,12 +75,20 @@ program
             process.exit(1)
           }
         } else {
-          // 未指定类型-选择类型
-          inquirer.prompt([{type: }])
           const dir = args[1]
           if (dir) {
             // 有创建目录名的情况
-            createProject(typeUrl, dir)
+            inquirer.prompt([{
+              name: 'projectType',
+              type: 'list',
+              message: 'which template you will choose?',
+              choices: ['h5', 'mini']
+            }]).then(answer => {
+              const {
+                projectType
+              } = answer
+              createProject(registry[projectType], dir)
+            })
           } else {
             // 无创建目录名
             inquirer.prompt([{
@@ -96,13 +98,22 @@ program
               const {
                 projectName
               } = answer
-              createProject(typeUrl, projectName)
+              // 未指定类型-选择类型
+              inquirer.prompt([{
+                name: 'projectType',
+                type: 'list',
+                message: 'which template you will choose?',
+                choices: ['h5', 'mini']
+              }]).then(answer => {
+                const {
+                  projectType
+                } = answer
+                createProject(registry[projectType], projectName)
+              })
             })
           }
         }
       }
-    } else if (git) {
-
     } else {
       // 无create命令
       console.log(chalk.redBright(`Error: no command found! You can run "bore -h" to see more detail.`))
