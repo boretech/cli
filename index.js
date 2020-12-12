@@ -37,6 +37,7 @@ program
   .alias('c')
   .description('create a project template')
   .option('-t, --type [h5|mini]', 'create a specified project template')
+  .option('-g, --git <url>', 'create a project template from a git registry')
   .action(function (cmd, cmdObj) {
     if (cmd) {
       // 有create命令-自定义创建模式
@@ -52,32 +53,12 @@ program
         } = cmdObj
         if (type) {
           // 指定类型的情况下
-          const typeUrl = registry[type]
-          if (typeUrl) {
-            const dir = args[1]
-            if (dir) {
-              // 有创建目录名的情况
-              createProject(typeUrl, dir)
-            } else {
-              // 无创建目录名
-              inquirer.prompt([{
-                name: 'projectName',
-                message: chalk.grey('input a project name:')
-              }]).then(answer => {
-                const {
-                  projectName
-                } = answer
-                createProject(typeUrl, projectName)
-              })
-            }
-          } else {
-            console.log(chalk.redBright(`Error: no "${type}" type found! Choose a type from [h5|mini]`))
+          if (cmdObj.git) {
+            console.log(chalk.redBright(`Error: can' create project with a specified type from git registry`))
             process.exit(1)
           }
-        } else {
-          const dir = args[1]
-          if (dir) {
-            // 有创建目录名的情况
+          if (typeof type === 'boolean' && type) {
+            // 未指定类型-选择类型
             inquirer.prompt([{
               name: 'projectType',
               type: 'list',
@@ -87,18 +68,69 @@ program
               const {
                 projectType
               } = answer
-              createProject(registry[projectType], dir)
+              const typeUrl = registry[projectType]
+              const dir = args[1]
+              if (dir) {
+                // 有创建目录名的情况
+                createProject(typeUrl, dir)
+              } else {
+                // 无创建目录名
+                inquirer.prompt([{
+                  name: 'projectName',
+                  message: chalk.grey('input a project name:')
+                }]).then(answer => {
+                  const {
+                    projectName
+                  } = answer
+                  createProject(typeUrl, projectName)
+                })
+              }
             })
           } else {
-            // 无创建目录名
-            inquirer.prompt([{
-              name: 'projectName',
-              message: chalk.grey('input a project name:')
-            }]).then(answer => {
-              const {
-                projectName
-              } = answer
-              // 未指定类型-选择类型
+            const typeUrl = registry[type]
+            if (typeUrl) {
+              const dir = args[1]
+              if (dir) {
+                // 有创建目录名的情况
+                createProject(typeUrl, dir)
+              } else {
+                // 无创建目录名
+                inquirer.prompt([{
+                  name: 'projectName',
+                  message: chalk.grey('input a project name:')
+                }]).then(answer => {
+                  const {
+                    projectName
+                  } = answer
+                  createProject(typeUrl, projectName)
+                })
+              }
+            } else {
+              console.log(chalk.redBright(`Error: no "${type}" type found! Choose a type from [h5|mini]`))
+              process.exit(1)
+            }
+          }
+        } else {
+          const dir = args[1]
+          if (cmdObj.git) {
+            if (dir) {
+              createProject(cmdObj.git, dir)
+            } else {
+              // 无创建目录名
+              inquirer.prompt([{
+                name: 'projectName',
+                message: chalk.grey('input a project name:')
+              }]).then(answer => {
+                const {
+                  projectName
+                } = answer
+                // 未指定类型-选择类型
+                createProject(cmdObj.git, projectName)
+              })
+            }
+          } else {
+            if (dir) {
+              // 有创建目录名的情况
               inquirer.prompt([{
                 name: 'projectType',
                 type: 'list',
@@ -108,9 +140,31 @@ program
                 const {
                   projectType
                 } = answer
-                createProject(registry[projectType], projectName)
+                createProject(registry[projectType], dir)
               })
-            })
+            } else {
+              // 无创建目录名
+              inquirer.prompt([{
+                name: 'projectName',
+                message: chalk.grey('input a project name:')
+              }]).then(answer => {
+                const {
+                  projectName
+                } = answer
+                // 未指定类型-选择类型
+                inquirer.prompt([{
+                  name: 'projectType',
+                  type: 'list',
+                  message: 'which template you will choose?',
+                  choices: ['h5', 'mini']
+                }]).then(answer => {
+                  const {
+                    projectType
+                  } = answer
+                  createProject(registry[projectType], projectName)
+                })
+              })
+            }
           }
         }
       }
@@ -119,7 +173,7 @@ program
       console.log(chalk.redBright(`Error: no command found! You can run "bore -h" to see more detail.`))
     }
   })
-  .usage("[project_name] [<-t|--type> h5|mini]")
+  .usage("[project_name] [<-t|--type> h5|mini] [[-g|--git] <url>]")
   .helpOption('-h, --help', 'display help for bore-cli')
   .version(chalk.gray(`bore-cli ${version}`), '-v, --version', 'output current version of bore-cli')
   .parse(process.argv)
