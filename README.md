@@ -4,7 +4,8 @@ A cli tool for bore tech frontend team.
 
 ### Install
 
-```shell
+
+```bash
 npm install bore-cli -g
 ```
 
