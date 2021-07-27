@@ -7,7 +7,8 @@ const {
 const {
   program
 } = require('commander')
-const download = require('download-git-repo')
+// const download = require('download-git-repo')
+const git = require('./git')
 const progress = require('process')
 const chalk = require('chalk')
 const ora = require('ora')
@@ -17,9 +18,16 @@ const createProject = (typeUrl, dir) => {
   console.log(typeUrl)
   console.log(dir)
   console.log(chalk.blueBright(`creating "${dir}" project template...`))
+
+  git(`git clone ${typeUrl} ${dir} && cd ${dir} && rm -rf .git`).then(res => {
+    console.log(res)
+  }).catch(err => {
+    console.log(err)
+  })
+
   // const loading = ora(chalk.blue('processing...'))
   // loading.start()
-  download(typeUrl, dir, {clone: true}, err => console.log(err))
+  // download(typeUrl, dir, {clone: true}, err => console.log(err))
   // download(typeUrl, dir, {
   //   clone: true
   // }, err => {
