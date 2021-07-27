@@ -14,20 +14,23 @@ const ora = require('ora')
 const inquirer = require('inquirer')
 
 const createProject = (typeUrl, dir) => {
+  console.log(typeUrl)
+  console.log(dir)
   console.log(chalk.blueBright(`creating "${dir}" project template...`))
-  const loading = ora(chalk.blue('processing...'))
-  loading.start()
-  download(typeUrl, dir, {
-    clone: true
-  }, err => {
-    if (err) {
-      loading.fail(chalk.redBright(`Error: ${JSON.stringify(err)}`))
-      process.exit(1)
-    } else {
-      loading.succeed(chalk.greenBright(`created "${dir}" success! Enjoy Coding!`))
-      console.log(chalk.yellowBright(`Hint: "cd ${dir} && yarn" or "cd ${dir} && npm install" to install dependence if necessary`))
-    }
-  })
+  // const loading = ora(chalk.blue('processing...'))
+  // loading.start()
+  download(typeUrl, dir, {clone: true}, err => console.log(err))
+  // download(typeUrl, dir, {
+  //   clone: true
+  // }, err => {
+  //   if (err) {
+  //     loading.fail(chalk.redBright(`Error: ${JSON.stringify(err)}`))
+  //     process.exit(1)
+  //   } else {
+  //     loading.succeed(chalk.greenBright(`created "${dir}" success! Enjoy Coding!`))
+  //     console.log(chalk.yellowBright(`Hint: "cd ${dir} && yarn" or "cd ${dir} && npm install" to install dependence if necessary`))
+  //   }
+  // })
 }
 
 

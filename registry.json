@@ -1,4 +1,4 @@
 {
   "h5": "gitlab:git.pannacloud.com:panna/boretemp",
-  "mini": "gitlab:git.pannacloud.com:panna/panna-mini"
+  "mini": "gitlab:git.pannacloud.com:panna/panna-mini#master"
 }
