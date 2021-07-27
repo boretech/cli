@@ -30,18 +30,7 @@ Bore-cli will prompt you to input or select relevant information.
 bore create [project_name] -g <url>
 ```
 
-`<url>` can be a repository string to download the repository from:
-
-- **github** - `github:url:owner/name#branch or simply url:owner/name#branch`
-- **gitlab** - `gitlab:url:owner/name#branch`
-- **Bitbucket** - `bitbucket:url:owner/name#branch`
-
-
-Also, it can be a http or https url:
-
-use `direct:url`
-
-More detail, see [download-git-repo](https://www.npmjs.com/package/download-git-repo).
+`<url>` can be a repository ssh address or an url to download the repository from.
 
 ### Notice
 
