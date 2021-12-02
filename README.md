@@ -35,3 +35,7 @@ bore create [project_name] -g <url>
 ### Notice
 
 Bore-cli is an internal company version for internal company use only. Therefore, some of its functions will be authorized used with company assets. A public version that does not contain sensitive company information will be released later.
+
+### JiShu lowcode platform
+
+[watch](https://github.com/jishu-lowcode)
