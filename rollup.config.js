@@ -14,6 +14,7 @@ export default {
     json(),
     resolve({
       include: 'node_modules/**',
+      preferBuiltins: true,
     }),
     commonjs(),
   ],
