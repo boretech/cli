@@ -20,6 +20,7 @@ jobs:
         run: pnpm install
       - name: build
         run: pnpm build
+
   publish-npm:
     needs: build
     runs-on: ubuntu-latest
@@ -30,6 +31,6 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - name: publish
-      - run: npm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
