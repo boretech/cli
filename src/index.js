@@ -1,13 +1,15 @@
-#!/usr/bin/env node
+// const registry = require('./registry.json')
+// const { version } = require('../package.json')
+import registry from './registry.json'
+import { version } from '../package.json'
 
-const registry = require('./registry.json')
-const { version } = require('./package.json')
 const { program } = require('commander')
 // const download = require('download-git-repo')
-const git = require('./git')
+// const git = require('./git')
 const progress = require('process')
 const chalk = require('chalk')
-const ora = require('ora')
+// const ora = require('ora')
+import ora from 'ora'
 const inquirer = require('inquirer')
 
 const createProject = (typeUrl, dir) => {
