@@ -1,4 +1,4 @@
-const exec = require('child_process').exec
+import { exec } from 'child_process'
 
 const git = (command) =>
   new Promise((resolve, reject) => {
@@ -8,9 +8,9 @@ const git = (command) =>
       } else if (typeof stderr !== 'string') {
         reject(stderr)
       } else {
-        resolve('git clone finished!')
+        resolve(stdout)
       }
     })
   })
 
-module.exports = git
+export default git
