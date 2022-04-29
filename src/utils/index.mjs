@@ -1,6 +1,6 @@
 import { exec } from 'child_process'
 
-const git = (command) =>
+export const git = (command) =>
   new Promise((resolve, reject) => {
     exec(command, (error, stdout, stderr) => {
       if (error) {
@@ -13,4 +13,6 @@ const git = (command) =>
     })
   })
 
-export default git
+export default {
+  git
+}
