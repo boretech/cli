@@ -4,7 +4,6 @@ import { Command } from 'commander/esm.mjs'
 import chalk from 'chalk'
 import { oraPromise } from 'ora'
 import inquirer from 'inquirer'
-
 import { git } from './utils/index.mjs'
 
 const createProject = async (typeUrl, dir) => {
