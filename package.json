@@ -1,17 +1,17 @@
 {
   "name": "@boretech/cli",
-  "version": "0.8.0",
-  "description": "",
-  "main": "./lib/index.js",
-  "type": "module",
+  "version": "0.9.0",
+  "description": "Boretech CLI",
+  "main": "src/index.mjs",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.14.2"
   },
   "scripts": {
-    "build": "rollup -c"
+    "dev": "rollup -c -w --environment NODE_ENV:development",
+    "build": "rollup -c --environment NODE_ENV:production"
   },
   "bin": {
-    "bore": "./bin/index.js"
+    "bore": "./bin/index.mjs"
   },
   "repository": {
     "type": "git",
@@ -24,17 +24,16 @@
     "url": "https://github.com/boretech/cli/issues"
   },
   "homepage": "https://github.com/boretech/cli/blob/main/README.md",
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.6",
-    "rollup": "^2.60.2"
-  },
   "dependencies": {
-    "chalk": "4.1.2",
-    "commander": "^8.3.0",
-    "inquirer": "^8.2.0",
-    "ora": "^6.0.1",
+    "chalk": "^5.0.1",
+    "commander": "^9.2.0",
+    "inquirer": "^8.2.4",
+    "ora": "^6.1.0",
     "progress": "^2.0.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup": "^2.70.2",
+    "rollup-plugin-uglify": "^6.0.4"
   }
 }

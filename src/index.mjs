@@ -1,19 +1,16 @@
-import registry from './registry.json'
 import { version } from '../package.json'
+import registry from '../registry.json'
 import { Command } from 'commander/esm.mjs'
 import chalk from 'chalk'
 import { oraPromise } from 'ora'
-// import progress from 'progress'
 import inquirer from 'inquirer'
 
-import git from './git.js'
+import { git } from './utils/index.mjs'
 
 const createProject = async (typeUrl, dir) => {
   console.log(chalk.blue(`Creating ${dir} from ${typeUrl} ...`))
   await oraPromise(
-    (ora) => {
-      return git(`git clone ${typeUrl} ${dir} && cd ${dir} && rm -rf .git`)
-    },
+    (ora) => git(`git clone ${typeUrl} ${dir} && cd ${dir} && rm -rf .git`),
     {
       text: chalk.blue('creating...'),
       successText: chalk.green('created successfully!'),

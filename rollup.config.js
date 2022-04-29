@@ -1,22 +1,24 @@
 import json from '@rollup/plugin-json'
-import resolve from '@rollup/plugin-node-resolve'
-import commonjs from '@rollup/plugin-commonjs'
+import { uglify } from "rollup-plugin-uglify"
+
+const isDev = process.env.NODE_ENV === 'development'
+
+const basePlugins = [json()]
+
+const devPlugins = []
+
+const prodPlugins = [
+  uglify()
+]
+
+const plugins = [...basePlugins].concat(isDev ? devPlugins : prodPlugins)
 
 export default {
-  input: 'src/app.js',
+  input: 'src/index.mjs',
+  external: ['fs', 'child_process', 'commander/esm.mjs', 'chalk', 'ora', 'inquirer'],
   output: {
-    file: 'lib/index.js',
-    format: 'esm',
-    name: 'index',
-    sourcemap: true,
+    file: 'dist/index.mjs',
+    format: 'esm'
   },
-  plugins: [
-    json(),
-    resolve({
-      include: 'node_modules/**',
-      preferBuiltins: true,
-    }),
-    commonjs(),
-  ],
-  external: ['ora'],
+  plugins
 }
