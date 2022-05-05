@@ -1,15 +1,15 @@
-# bore-cli
+# @boretech/cli
 
 `English` | [`简体中文`](./docs/simplified_chinese.md)
 
 A CLI tool for bore tech frontend team.
 
-![version](https://img.shields.io/npm/v/bore-cli) ![license](https://img.shields.io/github/license/xiaofuyesnew/bore-cli) ![node version](https://img.shields.io/node/v/bore-cli) ![build status](https://img.shields.io/github/workflow/status/xiaofuyesnew/bore-cli/publish)
+![version](https://img.shields.io/npm/v/@boretech/cli) ![license](https://img.shields.io/github/license/boretech/cli) ![node version](https://img.shields.io/node/v/@boretech/cli) ![build status](https://img.shields.io/github/workflow/status/boretech/cli/publish)
 
 ## Install
 
 ```bash
-npm install bore-cli -g
+npm install @boretech/cli -g
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ Command `create` has an alias name `c`. So you can easily use command `bore c`.
 
 If you want to use interactive settings, use the command `bore c` directly.
 
-Bore-cli will prompt you to input or select relevant information.
+@boretech/cli will prompt you to input or select relevant information.
 
 ### create project template from custom git registry
 
@@ -36,7 +36,7 @@ bore create [project_name] -g <url>
 
 ## Notice
 
-Bore-cli is an internal company version for internal company use only. Therefore, some of its functions will be authorized used with company assets. A public version that does not contain sensitive company information will be released later.
+@boretech/cli is an internal company version for internal company use only. Therefore, some of its functions will be authorized used with company assets. A public version that does not contain sensitive company information will be released later.
 
 ## JiShu lowcode platform
 

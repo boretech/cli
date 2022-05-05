@@ -4,12 +4,12 @@
 
 般若技研前端使用的一个 CLI 工具。
 
-![version](https://img.shields.io/npm/v/bore-cli) ![license](https://img.shields.io/github/license/xiaofuyesnew/bore-cli) ![node version](https://img.shields.io/node/v/bore-cli) ![build status](https://img.shields.io/github/workflow/status/xiaofuyesnew/bore-cli/publish)
+![version](https://img.shields.io/npm/v/@boretech/cli) ![license](https://img.shields.io/github/license/boretech/cli) ![node version](https://img.shields.io/node/v/@boretech/cli) ![build status](https://img.shields.io/github/workflow/status/boretech/cli/publish)
 
 ## 安装
 
 ```bash
-npm install bore-cli -g
+npm install @boretech/cli -g
 ```
 
 ## 使用
@@ -37,7 +37,6 @@ bore create [project_name] -g <url>
 ## 注意
 
 `@boretech/cli` 是一个般若技研公司内部使用的版本。因此，一些功能需要公司的授权才能使用。公开版本的该工具将在进行公司信息脱敏后另行发布。
-Bore-cli is an internal company version for internal company use only. Therefore, some of its functions will be authorized used with company assets. A public version that does not contain sensitive company information will be released later.
 
 ## 机枢 lowcode 平台
 
