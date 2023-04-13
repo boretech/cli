@@ -4,7 +4,7 @@
   "description": "Boretech CLI",
   "main": "src/index.mjs",
   "engines": {
-    "node": ">=16.14.2"
+    "node": "latest"
   },
   "scripts": {
     "build": "npx ncc build src/index.mjs -o dist -m"
