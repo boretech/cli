@@ -1,10 +1,14 @@
-import { version } from '../package.json'
-import registry from '../registry.json'
+import { resolve } from 'path'
+import { readJSONSync } from 'fs-extra'
 import { Command } from 'commander/esm.mjs'
 import chalk from 'chalk'
 import { oraPromise } from 'ora'
 import inquirer from 'inquirer'
 import { git } from './utils/index.mjs'
+
+const { version } = readJSONSync(resolve(process.cwd(), 'package.json'))
+
+const registry = readJSONSync(resolve(process.cwd(), 'src/registry.json'))
 
 const createProject = async (typeUrl, dir) => {
   console.log(chalk.blue(`Creating ${dir} from ${typeUrl} ...`))
