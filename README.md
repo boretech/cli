@@ -4,7 +4,7 @@
 
 A CLI tool for bore tech frontend team.
 
-![version](https://img.shields.io/npm/v/@boretech/cli) ![license](https://img.shields.io/github/license/boretech/cli) ![node version](https://img.shields.io/node/v/@boretech/cli) ![build status](https://img.shields.io/github/workflow/status/boretech/cli/publish)
+![version](https://img.shields.io/npm/v/@boretech/cli) ![license](https://img.shields.io/github/license/boretech/cli) ![node version](https://img.shields.io/node/v/@boretech/cli) ![build status](https://img.shields.io/github/actions/workflow/status/boretech/cli/publish.yml)
 
 ## Install
 
